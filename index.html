@@ -38,10 +38,10 @@
 				Разработка сайтов под ключ</p>
 			</div>
 			</div>
-			<a class="main-down" href="#" ><i class="icon-down"></i></a>
+			<a class="main-down slowly" href="#portfolio" ><i class="icon-down"></i></a>
 		</div>
 		
-		<div class="portfolio">
+		<div class="portfolio" id="portfolio">
 			<div class="container">
 				<h2 class="section-header">Портфолио</h2>
 				<div class="row">
@@ -121,6 +121,23 @@
     			modal.find('.modal-body').load(work+'.html');
     		});
     	});
+    </script>
+    <script>
+    	$(document).ready(function() {
+
+            //навигация - плавный скроллинг к якорю
+            $(".slowly").on("click", function (event) {
+                //отменяем стандартную обработку нажатия по ссылке
+                event.preventDefault();
+                //забираем идентификатор бока с атрибута href
+                var id  = $(this).attr('href'),
+                //узнаем высоту от начала страницы до блока на который ссылается якорь
+                    top = $(id).offset().top;
+                //анимируем переход на расстояние - top за 800 мс
+                $('body,html').animate({scrollTop: top}, 800);
+            });
+
+});
     </script>
   </body>
 </html>
